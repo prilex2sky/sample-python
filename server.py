@@ -13,7 +13,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(msg.encode())
 
 
-open('logfile.txt', 'w').writelines('')        
+#open('logfile.txt', 'w').writelines('')        
         
 port = int(os.getenv('PORT', 80))
 print('Listening on port %s' % (port))
