@@ -1,7 +1,7 @@
 import os
 import http.server
 import socketserver
-
+import sys
 from http import HTTPStatus
 
 
@@ -16,4 +16,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 port = int(os.getenv('PORT', 80))
 print('Listening on port %s' % (port))
 httpd = socketserver.TCPServer(('', port), Handler)
+
+buffer = 1
+sys.stderr = open('logfile.txt', 'w', buffer)
+
 httpd.serve_forever()
