@@ -13,11 +13,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(msg.encode())
 
 
+open('logfile.txt', 'w').writelines('')        
+        
 port = int(os.getenv('PORT', 80))
 print('Listening on port %s' % (port))
 httpd = socketserver.TCPServer(('', port), Handler)
 
 buffer = 1
-sys.stderr = open('logfile.txt', 'w', buffer)
+sys.stderr = open('logfile.txt', 'a', buffer)
 
 httpd.serve_forever()
